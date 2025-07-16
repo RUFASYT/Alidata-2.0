@@ -41,7 +41,7 @@
 
     <main>
          <div class="container">
-             <form action="action_page.php">
+             <form id="contact-form">
                <h1 style="text-align: center;">Contacto</h1>
             <div class="container-main-background-contacto">
                 
@@ -307,14 +307,38 @@
                     </select>
                 
                 
+                      <label for="email">Email</label>
+                    <input type="text" id="email" name="email" placeholder="O seu email">
+
                  <label for="subject">Assunto</label>
                     <textarea id="subject" name="subject" placeholder="Digite a sua mensagem..." style="height:200px"></textarea>
                 
                     <input type="submit" value="Enviar">
                 
                   </form>
+                  
             </div>
+            
 </div>
+ <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("RK56r7uvl2bhzZQ7p"); // <-- Substitui aqui
+    })();
+  </script>
+<script>
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      emailjs.sendForm('service_ppl5phe', 'template_2ygq07z', this)
+        .then(function(response) {
+          alert('Email enviado com sucesso!');
+        }, function(error) {
+          alert('Erro ao enviar: ' + JSON.stringify(error));
+        });
+    });
+  </script>
+
 
     </main>
 

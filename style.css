@@ -228,7 +228,7 @@ main{
 
 /* RELATÓRIO MAIN */
 .container-main-relatorio{
-    margin-top: 30px;
+    margin-top: 20px;
     background-color: white;
     border-radius: 15px;
     text-align: left;
@@ -239,13 +239,17 @@ main{
     display: flex;
     padding: 0%;
     padding-left: 10px;
+    margin-bottom: 10px;
+    
+    
+    
 }
 
 .container-main-summary{
-    margin-top: 20px;
+    margin-top: 10px;
     
    margin-right: 340px;
-   margin-bottom: 20px;
+   
    width: 100%;
    
    
@@ -257,6 +261,18 @@ main{
     width: 95%;
     
     
+}
+
+#titulo-relatorio{
+  font-size: 30px;
+}
+#info-relatorio{
+  background-color: #ccc;
+  padding: 10px;
+  margin: auto;
+  border-radius: 10px;
+  width: 95%;
+  margin-right: 12px;
 }
 
 /* CONTACTO - MAIN */
