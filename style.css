@@ -1,6 +1,18 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
+ .fade-in {
+      opacity: 0; /* Começa invisível */
+      animation: fadeIn 2s forwards;
+    }
 
 html,body{
     width: 100%;
@@ -21,12 +33,10 @@ body{
   line-height: 1.6;                   /* Espaçamento entre linhas */
   overflow-x: hidden; 
   background-image:linear-gradient(to right, rgb(47, 114, 208),rgb(43, 153, 222));
+  
 }
 
-p{
 
-
-}
 
 img {
   max-width: 100%;
@@ -51,6 +61,7 @@ header{
    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
    margin-bottom: 30px;
 }
+
 
 /* HEADER */
 .container-header{
