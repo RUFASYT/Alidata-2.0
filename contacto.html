@@ -340,6 +340,60 @@
     });
   </script>
 
+<button class="chat-toggle" onclick="toggleChat()">💬</button>
+
+<!-- Janela do Chat -->
+<div class="chat-box" id="chatBox" style="display: none;">
+  <div class="chat-header">🤖 Ajuda Rápida</div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="bot-message">Olá! Em que posso ajudar?</div>
+    <div class="question-buttons">
+      <button onclick="responder('capacidade')">Como tiveste capacidade para fazer o site?</button>
+      <button onclick="responder('email')">Como posso contactar?</button>
+      <button onclick="responder('estagio')">Quanto tempo demorou o estágio?</button>
+      <button onclick="responder('alidata')">Onde realizei o estágio?</button>
+    </div>
+  </div>
+
+  <script>
+  function toggleChat() {
+    const chat = document.getElementById("chatBox");
+    chat.style.display = chat.style.display === "none" ? "flex" : "none";
+  }
+
+  function responder(tipo) {
+    const mensagens = document.getElementById("chatMessages");
+
+    const perguntas = {
+      "capacidade": "Como tiveste capacidade para fazer o site?",
+      "email": "Como posso contactar?",
+      "estagio": "Quanto tempo demorou o estágio?",
+      "alidata": "Onde realizei o estágio?"
+    };
+
+    const respostas = {
+      "capacidade": "Para eu conseguir fazer este site tive de assistir a um curso online e gratis no youtube.",
+      "email": "Podes contactar-nos por email: santiagobpedrosa@gmail.com",
+      "estagio": "O estágio teve a duração de 200 horas, 25 dias.",
+      "alidata": "O meu estágio foi realizado na empresa Alidata localizada em Leiria."
+    };
+
+    // Mensagem do utilizador
+    const userDiv = document.createElement("div");
+    userDiv.className = "user-message";
+    userDiv.textContent = perguntas[tipo];
+    mensagens.appendChild(userDiv);
+
+    // Mensagem do bot
+    const botDiv = document.createElement("div");
+    botDiv.className = "bot-message";
+    botDiv.textContent = respostas[tipo];
+    mensagens.appendChild(botDiv);
+
+    mensagens.scrollTop = mensagens.scrollHeight;
+  }
+</script>
+  
 
     </main>
 

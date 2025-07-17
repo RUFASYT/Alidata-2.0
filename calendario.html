@@ -129,6 +129,81 @@
                <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium iure, ipsa eaque eligendi perferendis, magni impedit consequatur odio esse ipsam inventore assumenda cumque iusto deleniti. Sint cupiditate nam libero quas?</p>
                </div>
                </article>
+
+               <section class="botoes">
+                   <script>
+                     function exportarSumarios() {
+                       const sumarios = [];
+                       const elementos = document.querySelectorAll(".s");
+                   
+                       elementos.forEach(el => {
+                         const data = el.querySelector("h4.dia")?.textContent || "";
+                         const texto = el.querySelector("p")?.textContent || "";
+                         sumarios.push({ data, texto });
+                       });
+                   
+                       const json = JSON.stringify(sumarios, null, 2); // formatado
+                       const blob = new Blob([json], { type: "application/json" });
+                       const link = document.createElement("a");
+                   
+                       link.href = URL.createObjectURL(blob);
+                       link.download = "sumarios.json";
+                       link.click();
+                     }
+                   </script>
+                   
+                   <button class="botao" onclick="exportarSumarios()">📥 Baixar Sumários (JSON)</button>
+                   
+                   <script>
+                     function exportarSumariosXML() {
+                       const elementos = document.querySelectorAll(".s");
+                       let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<sumarios>\n';
+                   
+                       elementos.forEach(el => {
+                         const data = el.querySelector("h4.dia")?.textContent.trim() || "";
+                         const texto = el.querySelector("p")?.textContent.trim() || "";
+                   
+                         xml += `  <sumario>\n`;
+                         xml += `    <data>${data}</data>\n`;
+                         xml += `    <texto>${texto}</texto>\n`;
+                         xml += `  </sumario>\n`;
+                       });
+                   
+                       xml += '</sumarios>';
+                   
+                       const blob = new Blob([xml], { type: "application/xml" });
+                       const link = document.createElement("a");
+                       link.href = URL.createObjectURL(blob);
+                       link.download = "sumarios.xml";
+                       link.click();
+                     }
+                   </script>
+                   
+                   <button class="botao" onclick="exportarSumariosXML()">📥 Baixar Sumários (XML)</button>
+
+                   <script>
+  function exportarSumariosCSV() {
+    const elementos = document.querySelectorAll(".s");
+    let csv = "Data,Texto\n";
+
+    elementos.forEach(el => {
+      const data = el.querySelector("h4.dia")?.textContent.trim() || "";
+      const texto = el.querySelector("p")?.textContent.trim().replace(/"/g, '""') || ""; // escapa aspas
+
+      csv += `"${data}","${texto}"\n`;
+    });
+
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "sumarios.csv";
+    link.click();
+  }
+</script>
+
+<button class="botao" onclick="exportarSumariosCSV()">📥 Baixar Sumários (Excel/CSV)</button>
+
+               </section>
          </aritcle>
            
 
