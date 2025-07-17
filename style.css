@@ -83,6 +83,9 @@ header{
   height: 50px;
   
 }
+.botao:hover{
+  background-color: #007bff5c;
+}
 
 /* HEADER */
 .container-header{
